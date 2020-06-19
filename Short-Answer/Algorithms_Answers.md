@@ -2,13 +2,13 @@
 
 ## Exercise I
 
-a)
+a) Logarithmic O(log n)
 
 
-b)
+b) Linearithmic O(n log n)
 
 
-c)
+c) Constant O(1) - Runtime is not affected by input size
 
 ## Exercise II
 
