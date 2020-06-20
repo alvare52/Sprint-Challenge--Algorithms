@@ -139,54 +139,97 @@ class SortingRobot:
 
         # start
         # pick up first item
-        self.swap_item()
-        print(f"helf item: {self._item}, positon: {self._position}")
+        # self.swap_item()
+        # print(f"helf item: {self._item}, positon: {self._position}")
 
         # turn on light
         self.set_light_on()
+        print("light ON")
         
-        # while light is on ....
-
-       
-
-
-        # search for smallest
-        while self.can_move_right():
-            self.move_right()
-            
-            # if held is GREATER than in front, swap
-            if self.compare_item() == 1:
-                self.set_light_on
-                self.swap_item()
-
-        # ------
-
-        # move all the way to the left until you can't
-        while self.can_move_left():
-            self.move_left()
-
-        #  keep doing until light is off
         while self.light_is_on():
-            
+            print("Start Loop")
+
+            print("RIGHT!")
+            self.swap_item()
+
             self.set_light_off()
-
-            # until you get to end, we have lowest as our held temp
+            print("light OFF")
+            
+            # keep going right until you can't
             while self.can_move_right():
-                self.move_right() # i += 0
-                self.set_light_off()
-
-                # go right, swap, then go back
-                if self.can_move_right():
-                    self.move_right()
+                self.move_right()
+                    
+                # if held is GREATER than in front, swap
+                if self.compare_item() == 0 or self.compare_item() == -1:
                     self.swap_item()
-                    self.move_left()
-
-                # if held (old next) is LESS than front
-                if self.compare_item() == -1:
-                    self.swap_item()
-                    self.move_right()
-                    self.swap_item()
+                    # print(f"helf item: {self._item}, positon: {self._position}")
+                else:
                     self.set_light_on()
+                    print("light ON")
+        
+            print("LEFT")
+            self.swap_item()
+            # print(f"helf item: {self._item}, positon: {self._position}")
+
+            # keep going left until you cant'
+            while self.can_move_left():
+                self.move_left()
+                # print(f"helf item: {self._item}, positon: {self._position}")
+
+                if self.compare_item() is None or self.compare_item() > 0:
+                    self.swap_item()
+                    # print(f"helf item: {self._item}, positon: {self._position}")
+
+        print("End Loop")
+        
+        # while self.light_is_on:
+            # # keep going right until you can't
+            # self.swap_item()
+            # self.set_light_off()
+
+            # while self.can_move_right():
+            #     self.move_right()
+                
+            #     # if held is GREATER than in front, swap
+            #     if self.compare_item() <= 0:
+            #         self.swap_item()
+            #     else:
+            #         self.set_light_on()
+
+            # self.swap_item()
+            # # keep going left
+            # while self.can_move_left():
+            #     self.move_left()
+
+            #     if self.compare_item() is None or self.compare_item() > 0:
+            #         self.swap_item()
+
+        # # move all the way to the left until you can't
+        # while self.can_move_left():
+        #     self.move_left()
+
+        # #  keep doing until light is off
+        # while self.light_is_on():
+            
+        #     self.set_light_off()
+
+        #     # until you get to end, we have lowest as our held temp
+        #     while self.can_move_right():
+        #         self.move_right() # i += 0
+        #         self.set_light_off()
+
+        #         # go right, swap, then go back
+        #         if self.can_move_right():
+        #             self.move_right()
+        #             self.swap_item()
+        #             self.move_left()
+
+        #         # if held (old next) is LESS than front
+        #         if self.compare_item() == -1:
+        #             self.swap_item()
+        #             self.move_right()
+        #             self.swap_item()
+        #             self.set_light_on()
 
 
         # ------ Put first back
